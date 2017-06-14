@@ -30,28 +30,29 @@ function _getManifestData(file, opts) {
             this.emit('error', new PluginError(PLUGIN_NAME,  x));
             return;
         }
-        if (_.isObject(json)) {
-            var isRev = 1;
-            Object.keys(json).forEach(function (key) {
-                if (!_.isString(json[key])) {
-                    isRev = 0;
-                    return;
-                }
-                let cleanReplacement =  path.basename(json[key]).replace(new RegExp( opts.revSuffix ), '' );
-                if (!~[
-                        path.basename(key),
-                        _mapExtnames(path.basename(key), opts)
-                    ].indexOf(cleanReplacement)
-                ) {
-                    isRev = 0;
-                }
-            });
+//         if (_.isObject(json)) {
+//             var isRev = 1;
+//             Object.keys(json).forEach(function (key) {
+//                 if (!_.isString(json[key])) {
+//                     isRev = 0;
+//                     return;
+//                 }
+//                 let cleanReplacement =  path.basename(json[key]).replace(new RegExp( opts.revSuffix ), '' );
+//                 if (!~[
+//                         path.basename(key),
+//                         _mapExtnames(path.basename(key), opts)
+//                     ].indexOf(cleanReplacement)
+//                 ) {
+//                     isRev = 0;
+//                 }
+//             });
 
-            if (isRev) {
-                data = json;
-            }
-        }
-
+//             if (isRev) {
+//                 data = json;
+//             }
+//         }
+        
+        data = json;
     }
     return data;
 }
